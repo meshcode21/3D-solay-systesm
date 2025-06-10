@@ -1,0 +1,98 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background: black;
+}
+
+canvas {
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+#control-panel {
+  position: absolute;
+  top: 10px;
+  border-radius: 10px;
+  left: 10px;
+  background: rgba(238, 238, 238, 0.87);
+  padding: 10px;
+  z-index: 10;
+}
+#control-panel div {
+  display: flex;
+  margin-bottom: 5px;
+}
+#control-panel #togglePanelBtn {
+  display: none;
+}
+#control-panel h1 {
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+  color: rgb(41, 41, 41);
+}
+#control-panel #resetButton {
+  background: rgba(68, 121, 0, 0.623);
+  border: none;
+  padding: 5px 10px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 5px;
+  width: 100%;
+  justify-content: center;
+}
+
+#pauseBtn {
+  position: absolute;
+  border: none;
+  padding: 0;
+  background: rgba(238, 238, 238, 0.87);
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+}
+#pauseBtn img {
+  width: 30px;
+  height: 30px;
+}
+
+@media (max-width: 600px) {
+  #control-panel {
+    width: 70%;
+  }
+  #control-panel .panel-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #control-panel .panel-header button {
+    background: none;
+    width: 50px;
+  }
+  #control-panel #togglePanelBtn{
+    display: block;
+    border: none;
+  }
+  #control-panel img {
+    display: block;
+    width: 25px;
+  }
+  #control-panel div {
+    display: flex;
+    flex-direction: column;
+  }
+  #control-panel h1 {
+    font-size: 18px;
+  }
+}

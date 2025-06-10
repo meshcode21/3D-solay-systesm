@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solar System</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="control-panel">
+      <div class="panel-header">
+        <h1>Speed Control Panel</h1>
+        <button
+          id="togglePanelBtn"
+          onclick="{
+          panlElements = document.getElementById('control-panel').children;
+          for (let i = 1; i < panlElements.length; i++) {
+            if (panlElements[i].style.display === 'none') {
+              panlElements[i].style.display = 'flex';
+            } else {
+              panlElements[i].style.display = 'none';
+            }
+          }}"
+        >
+          <img src="./res/menu.svg" alt="||" />
+        </button>
+      </div>
+    </div>
+    <button id="pauseBtn">
+      <img id="pauseIcon" src="./res/pause.svg" alt="Pause/Play" />
+    </button>
+
+    <!-- Three.js Core -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.min.js"></script>
+
+    <!-- OrbitControls from examples -->
+    <script src="OrbitControls.js"></script>
+
+    <script>
+      
+      let isPaused = false;
+      let pauseIcon = document.getElementById("pauseIcon");
+
+      document.getElementById("pauseBtn").addEventListener("click", () => {
+        isPaused = !isPaused;
+        pauseIcon.src = isPaused ? "./res/play.svg" : "./res/pause.svg";
+      });
+    </script>
+    <!-- main script -->
+    <script src="script.js"></script>
+    <script>
+      // UI Panel
+      const controlPanel = document.getElementById("control-panel");
+      planets.forEach((planet) => {
+        const container = document.createElement("div");
+        const label = document.createElement("label");
+        label.textContent = `${planet.name} Speed: `;
+        const input = document.createElement("input");
+        input.type = "range";
+        input.min = "0.001";
+        input.max = "0.05";
+        input.step = "0.001";
+        input.value = planet.speed;
+        input.oninput = (e) => (planet.speed = parseFloat(e.target.value));
+        container.appendChild(label);
+        container.appendChild(input);
+        controlPanel.appendChild(container);
+      });
+      // Add a reset button
+      const resetButton = document.createElement("button");
+      resetButton.textContent = "Reset Planet Speeds";
+      resetButton.id = "resetButton";
+      resetButton.onclick = () => {
+        planets.forEach((planet) => (planet.speed = planet.defaultSpeed));
+        controlPanel.querySelectorAll("input").forEach((input, index) => {
+          input.value = planets[index].defaultSpeed;
+        });
+      };
+      controlPanel.appendChild(resetButton);
+
+      // toggle panel is hidden on small screens
+      if (window.innerWidth < 600) {
+        panlElements = document.getElementById("control-panel").children;
+        for (let i = 1; i < panlElements.length; i++) {
+          console.log(window.innerWidth);
+          panlElements[i].style.display = "none";
+        }
+      }
+    </script>
+  </body>
+</html>
