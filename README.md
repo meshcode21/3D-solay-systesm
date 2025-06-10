@@ -39,14 +39,14 @@ A mobile-responsive web app built with **Three.js** that visualizes the solar sy
 ### 1. Clone or download this repo
 
 ```
-git clone <your-repo-url>
+git clone https://github.com/meshcode21/3D-solay-systesm.git
 ```
 
 ### 2. Open `index.html` in your browser
 
 Use **Live Server** in VS Code or any static file server for best results.
 
-Or just double-click `index.html` to launch it.
+but direct lunching `index.html` get problem to run properly.
 
 > No build tools or NPM required
 
